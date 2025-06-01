@@ -115,7 +115,7 @@
     opacity: 0;
   }
   50% {
-    opacity: 0.5;
+    opacity: 1;
   }
   100% {
     transform: translateY(100vh);
@@ -125,30 +125,32 @@
 
 .rain-drop {
   position: absolute;
-  width: 1px;
-  height: 20px;
-  background: linear-gradient(transparent, #4F46E5);
-  animation: rain linear infinite;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(transparent, #6366f1, #4F46E5);
+  animation: rain 1.5s linear infinite;
+  opacity: 0;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
 }
 
 .rain-drop::before {
   content: '';
   position: absolute;
-  width: 1px;
-  height: 20px;
-  background: linear-gradient(transparent, #4F46E5);
-  opacity: 0.2;
-  transform: translateX(-5px);
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(transparent, #6366f1, #4F46E5);
+  opacity: 0.4;
+  transform: translateX(-10px);
 }
 
 .rain-drop::after {
   content: '';
   position: absolute;
-  width: 1px;
-  height: 20px;
-  background: linear-gradient(transparent, #4F46E5);
-  opacity: 0.2;
-  transform: translateX(5px);
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(transparent, #6366f1, #4F46E5);
+  opacity: 0.4;
+  transform: translateX(10px);
 }
 
 .animate-fade-in-up {
@@ -202,36 +204,35 @@ body {
 .fog-container {
   @apply fixed bottom-0 left-0 right-0 w-full pointer-events-none overflow-hidden;
   height: 45vh;
-  opacity: 0;
+  opacity: 1;
   animation: fade-in-up 1.2s ease-out forwards;
-  animation-delay: 800ms;
 }
 
 .fog-svg {
   @apply absolute bottom-0 left-[-15%] w-[130%];
   height: 100%;
-  filter: blur(4px);
+  filter: blur(8px);
 }
 
 .fog-path {
-  fill: rgba(255, 255, 255, 0.03);
+  fill: rgba(255, 255, 255, 0.05);
   transform-origin: center;
   transform-box: fill-box;
 }
 
 .fog-path-1 {
   animation: float-fog 22s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.04);
+  fill: rgba(255, 255, 255, 0.07);
 }
 
 .fog-path-2 {
   animation: float-fog-reverse 25s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.025);
+  fill: rgba(255, 255, 255, 0.05);
 }
 
 .fog-path-3 {
   animation: float-fog-alt 28s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.02);
+  fill: rgba(255, 255, 255, 0.03);
 }
 
 .fog-path-4 {
