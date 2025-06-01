@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 8, 8, 12;
+  --background-end-rgb: 16, 16, 24;
+  --accent-light: 229, 231, 235;
+  --accent-dark: 17, 24, 39;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translatey(-20px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translatey(0px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float-reverse {
+  0% {
+    transform: translatey(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translatey(20px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translatey(0px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fog-drift {
+  0% {
+    transform: translateX(-10%) translateY(0);
+  }
+  50% {
+    transform: translateX(10%) translateY(-5%);
+  }
+  100% {
+    transform: translateX(-10%) translateY(0);
+  }
+}
+
+@keyframes float-fog {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(2%, 1%) scale(1.02);
+  }
+  66% {
+    transform: translate(-1%, 2%) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes float-fog-reverse {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-2%, 2%) scale(0.98);
+  }
+  66% {
+    transform: translate(1%, 1%) scale(0.99);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes float-fog-alt {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-1%, -1%) scale(1.01);
+  }
+  66% {
+    transform: translate(2%, 1%) scale(0.99);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.cloud {
+  @apply fixed pointer-events-none blur-3xl;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+}
+
+.cloud-1 {
+  @apply w-[40rem] h-[40rem] -left-40 top-0;
+  animation: float 8s ease-in-out infinite;
+}
+
+.cloud-2 {
+  @apply w-[30rem] h-[30rem] -right-20 top-40;
+  animation: float-reverse 12s ease-in-out infinite;
+}
+
+.cloud-3 {
+  @apply w-[35rem] h-[35rem] left-1/4 top-1/3;
+  animation: float 10s ease-in-out infinite;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.fog-container {
+  @apply fixed bottom-0 left-0 right-0 w-full pointer-events-none overflow-hidden;
+  height: 45vh;
+  opacity: 0;
+  animation: fade-in-up 1.2s ease-out forwards;
+  animation-delay: 800ms;
+}
+
+.fog-svg {
+  @apply absolute bottom-0 left-[-15%] w-[130%];
+  height: 100%;
+  filter: blur(4px);
+}
+
+.fog-path {
+  fill: rgba(255, 255, 255, 0.03);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.fog-path-1 {
+  animation: float-fog 22s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.04);
+}
+
+.fog-path-2 {
+  animation: float-fog-reverse 25s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.025);
+}
+
+.fog-path-3 {
+  animation: float-fog-alt 28s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.02);
+}
+
+.fog-path-4 {
+  animation: float-fog 30s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.015);
+}
+
+.fog-path-5 {
+  animation: float-fog-reverse 32s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.01);
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gray-900 text-white px-8 py-3 rounded-lg text-lg font-medium
+    transform transition-all duration-300 ease-out
+    border border-white/20
+    shadow-[0_0_15px_rgba(255,255,255,0.1)]
+    hover:bg-gray-800 hover:scale-110 
+    hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]
+    hover:border-white/40
+    active:scale-95 active:shadow-inner;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-white px-8 py-3 rounded-lg text-lg font-medium
+    transform transition-all duration-300 ease-out
+    border border-white/20
+    shadow-[0_0_15px_rgba(255,255,255,0.1)]
+    backdrop-blur-sm
+    hover:bg-white/10 hover:scale-110 
+    hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]
+    hover:border-white/40
+    active:scale-95 active:shadow-inner;
+  }
+
+  .card {
+    @apply bg-gray-900/30 backdrop-blur-sm p-6 rounded-xl
+    transform transition-all duration-200 ease-out
+    hover:bg-gray-900/40 
+    hover:shadow-[0_0_25px_rgba(0,0,0,0.3)]
+    border border-white/[0.05]
+    hover:border-white/[0.08];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r 
+    from-white via-gray-200 to-gray-400;
+  }
+}
