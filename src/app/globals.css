@@ -111,51 +111,76 @@
 /* Rain Animation */
 @keyframes rain {
   0% {
-    transform: translateY(-100%);
-    opacity: 0;
+    transform: translateY(0) translateX(0);
   }
   50% {
-    opacity: 1;
+    transform: translateY(50vh) translateX(-20px);
   }
   100% {
-    transform: translateY(100vh);
-    opacity: 0;
+    transform: translateY(100vh) translateX(-40px);
   }
 }
 
 .rain-drop {
-  position: absolute;
-  width: 2px;
-  height: 40px;
-  background: linear-gradient(transparent, #6366f1, #4F46E5);
+  position: fixed;
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent, #60A5FA 10%, #3B82F6);
   animation: rain 1.5s linear infinite;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+  stroke: #60A5FA;
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: logo-rain 1.5s infinite;
   opacity: 0;
-  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
 }
 
 .rain-drop::before {
   content: '';
   position: absolute;
-  width: 2px;
-  height: 40px;
-  background: linear-gradient(transparent, #6366f1, #4F46E5);
-  opacity: 0.4;
-  transform: translateX(-10px);
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent, #60A5FA 10%, #3B82F6);
+  opacity: 0.2;
+  transform: translateX(-5px);
 }
 
 .rain-drop::after {
   content: '';
   position: absolute;
-  width: 2px;
-  height: 40px;
-  background: linear-gradient(transparent, #6366f1, #4F46E5);
-  opacity: 0.4;
-  transform: translateX(10px);
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(180deg, transparent, #60A5FA 10%, #3B82F6);
+  opacity: 0.2;
+  transform: translateX(5px);
+}
+
+.rain-drop:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.rain-drop:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes logo-rain {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
 
 .animate-fade-in-up {
   opacity: 0;
-  animation: fade-in-up 0.6s ease-out forwards;
+  animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .delay-200 {
@@ -201,48 +226,128 @@ body {
   overflow-x: hidden;
 }
 
+/* Fog Effect */
 .fog-container {
-  @apply fixed bottom-0 left-0 right-0 w-full pointer-events-none overflow-hidden;
-  height: 45vh;
-  opacity: 1;
-  animation: fade-in-up 1.2s ease-out forwards;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .fog-svg {
-  @apply absolute bottom-0 left-[-15%] w-[130%];
   height: 100%;
-  filter: blur(8px);
 }
 
 .fog-path {
-  fill: rgba(255, 255, 255, 0.05);
   transform-origin: center;
   transform-box: fill-box;
 }
 
 .fog-path-1 {
-  animation: float-fog 22s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.07);
+  animation: float-fog-slow 30s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.08);
 }
 
 .fog-path-2 {
-  animation: float-fog-reverse 25s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.05);
+  animation: float-fog-wave 25s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.06);
 }
 
 .fog-path-3 {
-  animation: float-fog-alt 28s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.03);
+  animation: float-fog-detailed 20s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.05);
 }
 
 .fog-path-4 {
-  animation: float-fog 30s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.015);
+  animation: float-fog-dynamic 15s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.04);
 }
 
 .fog-path-5 {
-  animation: float-fog-reverse 32s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.01);
+  animation: float-fog-quick 12s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.03);
+}
+
+@keyframes float-fog-slow {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  50% {
+    transform: translateX(3%) scale(1.02);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes float-fog-wave {
+  0% {
+    transform: translate(-2%, 0) scale(0.98);
+  }
+  33% {
+    transform: translate(1%, -1%) scale(1);
+  }
+  66% {
+    transform: translate(-1%, 1%) scale(0.99);
+  }
+  100% {
+    transform: translate(-2%, 0) scale(0.98);
+  }
+}
+
+@keyframes float-fog-detailed {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-2%, -0.5%) scale(1.01);
+  }
+  50% {
+    transform: translate(1%, -1%) scale(0.99);
+  }
+  75% {
+    transform: translate(-1%, -0.5%) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes float-fog-dynamic {
+  0% {
+    transform: translate(1%, 0) scale(1);
+  }
+  20% {
+    transform: translate(-1%, -1%) scale(1.02);
+  }
+  40% {
+    transform: translate(2%, 0.5%) scale(0.98);
+  }
+  60% {
+    transform: translate(-2%, -0.5%) scale(1.01);
+  }
+  80% {
+    transform: translate(1%, 1%) scale(0.99);
+  }
+  100% {
+    transform: translate(1%, 0) scale(1);
+  }
+}
+
+@keyframes float-fog-quick {
+  0% {
+    transform: translate(-1%, 0) scale(1);
+  }
+  33% {
+    transform: translate(1%, -0.5%) scale(1.01);
+  }
+  66% {
+    transform: translate(-0.5%, 0.5%) scale(0.99);
+  }
+  100% {
+    transform: translate(-1%, 0) scale(1);
+  }
 }
 
 @layer components {
