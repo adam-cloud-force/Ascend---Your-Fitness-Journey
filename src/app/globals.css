@@ -65,31 +65,31 @@
 
 @keyframes float-fog {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translateX(-3%) translateY(0);
+    opacity: 0.5;
   }
-  33% {
-    transform: translate(2%, 1%) scale(1.02);
-  }
-  66% {
-    transform: translate(-1%, 2%) scale(1.01);
+  50% {
+    transform: translateX(3%) translateY(-1%);
+    opacity: 0.6;
   }
   100% {
-    transform: translate(0, 0) scale(1);
+    transform: translateX(-3%) translateY(0);
+    opacity: 0.5;
   }
 }
 
 @keyframes float-fog-reverse {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translateX(3%) translateY(0);
+    opacity: 0.5;
   }
-  33% {
-    transform: translate(-2%, 2%) scale(0.98);
-  }
-  66% {
-    transform: translate(1%, 1%) scale(0.99);
+  50% {
+    transform: translateX(-3%) translateY(-1%);
+    opacity: 0.6;
   }
   100% {
-    transform: translate(0, 0) scale(1);
+    transform: translateX(3%) translateY(0);
+    opacity: 0.5;
   }
 }
 
@@ -229,125 +229,50 @@ body {
 /* Fog Effect */
 .fog-container {
   position: fixed;
-  width: 100%;
-  overflow: hidden;
-  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
   pointer-events: none;
+  height: 45vh;
+  z-index: -1;
 }
 
 .fog-svg {
+  width: 130%;
   height: 100%;
+  position: absolute;
+  left: -15%;
+  bottom: 0;
 }
 
 .fog-path {
-  transform-origin: center;
-  transform-box: fill-box;
+  fill: rgba(255, 255, 255, 0.05);
+  transform-origin: 50% 50%;
 }
 
 .fog-path-1 {
-  animation: float-fog-slow 30s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.08);
+  animation: float-fog 20s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.07);
 }
 
 .fog-path-2 {
-  animation: float-fog-wave 25s ease-in-out infinite;
-  fill: rgba(255, 255, 255, 0.06);
-}
-
-.fog-path-3 {
-  animation: float-fog-detailed 20s ease-in-out infinite;
+  animation: float-fog-reverse 25s ease-in-out infinite;
   fill: rgba(255, 255, 255, 0.05);
 }
 
+.fog-path-3 {
+  animation: float-fog 28s ease-in-out infinite;
+  fill: rgba(255, 255, 255, 0.03);
+}
+
 .fog-path-4 {
-  animation: float-fog-dynamic 15s ease-in-out infinite;
+  animation: float-fog-reverse 30s ease-in-out infinite;
   fill: rgba(255, 255, 255, 0.04);
 }
 
 .fog-path-5 {
-  animation: float-fog-quick 12s ease-in-out infinite;
+  animation: float-fog 32s ease-in-out infinite;
   fill: rgba(255, 255, 255, 0.03);
-}
-
-@keyframes float-fog-slow {
-  0% {
-    transform: translateX(0) scale(1);
-  }
-  50% {
-    transform: translateX(3%) scale(1.02);
-  }
-  100% {
-    transform: translateX(0) scale(1);
-  }
-}
-
-@keyframes float-fog-wave {
-  0% {
-    transform: translate(-2%, 0) scale(0.98);
-  }
-  33% {
-    transform: translate(1%, -1%) scale(1);
-  }
-  66% {
-    transform: translate(-1%, 1%) scale(0.99);
-  }
-  100% {
-    transform: translate(-2%, 0) scale(0.98);
-  }
-}
-
-@keyframes float-fog-detailed {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(-2%, -0.5%) scale(1.01);
-  }
-  50% {
-    transform: translate(1%, -1%) scale(0.99);
-  }
-  75% {
-    transform: translate(-1%, -0.5%) scale(1.01);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-@keyframes float-fog-dynamic {
-  0% {
-    transform: translate(1%, 0) scale(1);
-  }
-  20% {
-    transform: translate(-1%, -1%) scale(1.02);
-  }
-  40% {
-    transform: translate(2%, 0.5%) scale(0.98);
-  }
-  60% {
-    transform: translate(-2%, -0.5%) scale(1.01);
-  }
-  80% {
-    transform: translate(1%, 1%) scale(0.99);
-  }
-  100% {
-    transform: translate(1%, 0) scale(1);
-  }
-}
-
-@keyframes float-fog-quick {
-  0% {
-    transform: translate(-1%, 0) scale(1);
-  }
-  33% {
-    transform: translate(1%, -0.5%) scale(1.01);
-  }
-  66% {
-    transform: translate(-0.5%, 0.5%) scale(0.99);
-  }
-  100% {
-    transform: translate(-1%, 0) scale(1);
-  }
 }
 
 @layer components {

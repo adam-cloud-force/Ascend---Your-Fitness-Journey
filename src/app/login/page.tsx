@@ -188,39 +188,42 @@ export default function Login() {
       </div>
 
       {/* Fog Effect at Bottom */}
-      <div className="fog-container fixed bottom-0 left-0 right-0 pointer-events-none" style={{ height: '90vh' }}>
-        <svg className="fog-svg absolute bottom-0 left-[-25%] w-[150%]" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+      <div className="fog-container">
+        <svg className="fog-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
           <path
             className="fog-path fog-path-1"
-            d="M-300,800 
-               C200,750 400,850 600,800 
-               C800,750 1000,850 1300,800 
-               L1300,1000 L-300,1000 Z"
-            style={{ filter: 'blur(10px)' }}
+            d="M-200,260 
+               C100,250 200,200 400,230 
+               C600,260 800,220 1200,250 
+               L1200,300 L-200,300 Z"
           />
           <path
             className="fog-path fog-path-2"
-            d="M-300,850 
-               C150,800 350,900 550,850 
-               C750,800 950,900 1300,850 
-               L1300,1000 L-300,1000 Z"
-            style={{ filter: 'blur(20px)' }}
+            d="M-200,250 
+               C50,270 300,220 500,260 
+               C700,280 900,240 1200,270 
+               L1200,300 L-200,300 Z"
           />
           <path
             className="fog-path fog-path-3"
-            d="M-300,900 
-               C100,850 300,950 500,900 
-               C700,850 900,950 1300,900 
-               L1300,1000 L-300,1000 Z"
-            style={{ filter: 'blur(15px)' }}
+            d="M-200,270 
+               C150,240 400,280 600,250 
+               C800,220 1000,260 1200,240 
+               L1200,300 L-200,300 Z"
           />
           <path
             className="fog-path fog-path-4"
-            d="M-300,920 
-               C200,870 400,970 600,920 
-               C800,870 1000,970 1300,920 
-               L1300,1000 L-300,1000 Z"
-            style={{ filter: 'blur(25px)' }}
+            d="M-200,255 
+               C200,240 350,270 550,250 
+               C750,230 950,260 1200,245 
+               L1200,300 L-200,300 Z"
+          />
+          <path
+            className="fog-path fog-path-5"
+            d="M-200,265 
+               C100,255 300,235 500,260 
+               C700,285 900,245 1200,265 
+               L1200,300 L-200,300 Z"
           />
         </svg>
       </div>
