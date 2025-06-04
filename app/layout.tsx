@@ -1,12 +1,11 @@
-'use client'
-
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from './providers'
+import { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Ascend - Your Fitness Journey',
   description: 'Transform your fitness journey with personalized workouts and expert guidance.',
 }
