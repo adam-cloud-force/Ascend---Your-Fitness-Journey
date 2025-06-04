@@ -8,10 +8,17 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ req, token }) => {
+        // Allow public routes
         if (req.nextUrl.pathname.startsWith('/api/auth')) {
           return true
         }
-        return !!token
+        
+        // Protect dashboard routes
+        if (req.nextUrl.pathname.startsWith('/dashboard')) {
+          return !!token
+        }
+
+        return true
       },
     },
   }

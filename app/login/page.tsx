@@ -18,24 +18,20 @@ export default function Login() {
     setError('')
 
     try {
-      console.log('Login attempt:', { email: formData.email })
-      
-      // TODO: Replace this with actual authentication
-      // For now, we'll simulate a new user that needs onboarding
-      const isNewUser = true
-      
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      if (isNewUser) {
-        console.log('New user detected, redirecting to onboarding...')
-        await router.push('/onboarding')
+      const result = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        setError('Invalid credentials. Please try again.')
       } else {
-        console.log('Existing user, redirecting to dashboard...')
-        await router.push('/dashboard')
+        router.push('/dashboard')
       }
     } catch (err) {
       console.error('Login error:', err)
-      setError('Invalid credentials. Please try again.')
+      setError('An error occurred. Please try again.')
     }
   }
 
@@ -49,10 +45,12 @@ export default function Login() {
 
   const handleGoogleSignIn = async () => {
     try {
-      // For now, always treat Google sign-in users as new users
-      await signIn('google', { callbackUrl: '/onboarding' })
+      await signIn('google', { 
+        callbackUrl: '/dashboard'
+      })
     } catch (err) {
       console.error('Google sign in error:', err)
+      setError('Failed to sign in with Google')
     }
   }
 
@@ -87,6 +85,12 @@ export default function Login() {
           <h2 className="text-3xl font-bold gradient-text mb-2">Welcome Back</h2>
           <p className="text-gray-400">Continue your journey to greatness</p>
         </div>
+
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
+            <p className="text-red-400 text-sm text-center">{error}</p>
+          </div>
+        )}
 
         <button
           onClick={handleGoogleSignIn}
@@ -172,12 +176,6 @@ export default function Login() {
             </div>
           </div>
 
-          {error && (
-            <div className="text-red-400 text-sm text-center animate-fade-in-up">
-              {error}
-            </div>
-          )}
-
           <button
             type="submit"
             className="btn-primary w-full flex justify-center"
@@ -197,41 +195,9 @@ export default function Login() {
       {/* Fog Effect */}
       <div className="fog-container">
         <svg className="fog-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
-          <path
-            className="fog-path fog-path-1"
-            d="M-200,260 
-               C100,250 200,200 400,230 
-               C600,260 800,220 1200,250 
-               L1200,300 L-200,300 Z"
-          />
-          <path
-            className="fog-path fog-path-2"
-            d="M-200,250 
-               C50,270 300,220 500,260 
-               C700,280 900,240 1200,270 
-               L1200,300 L-200,300 Z"
-          />
-          <path
-            className="fog-path fog-path-3"
-            d="M-200,270 
-               C150,240 400,280 600,250 
-               C800,220 1000,260 1200,240 
-               L1200,300 L-200,300 Z"
-          />
-          <path
-            className="fog-path fog-path-4"
-            d="M-200,255 
-               C200,240 350,270 550,250 
-               C750,230 950,260 1200,245 
-               L1200,300 L-200,300 Z"
-          />
-          <path
-            className="fog-path fog-path-5"
-            d="M-200,265 
-               C100,255 300,235 500,260 
-               C700,285 900,245 1200,265 
-               L1200,300 L-200,300 Z"
-          />
+          <path className="fog-path" d="M -100 100 Q 150 100 400 95 C 650 90 700 50 800 50 L 1100 50 L 1100 400 L -100 400" />
+          <path className="fog-path" d="M -100 200 Q 150 200 400 195 C 650 190 700 150 800 150 L 1100 150 L 1100 400 L -100 400" />
+          <path className="fog-path" d="M -100 300 Q 150 300 400 295 C 650 290 700 250 800 250 L 1100 250 L 1100 400 L -100 400" />
         </svg>
       </div>
     </div>
