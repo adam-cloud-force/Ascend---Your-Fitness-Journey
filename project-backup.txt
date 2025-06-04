@@ -1,0 +1,66 @@
+# Ascend Your Fitness Journey - Project Backup
+
+## Project Structure
+The project is a Next.js fitness application with the following structure:
+
+/app
+  /(auth)
+    /login
+      page.tsx - Login page with authentication
+    /signup
+      page.tsx - Signup page with form and Google auth
+    /onboarding
+      page.tsx - Multi-step onboarding process
+    layout.tsx - Auth layout with rain and fog effects
+  /(dashboard)
+    /dashboard
+      page.tsx - Main dashboard with stats and workout programs
+    layout.tsx - Dashboard layout with visual effects
+
+## Key Features
+- Authentication (Email + Google Sign-in)
+- Multi-step onboarding process
+- Dashboard with:
+  - Workout stats
+  - Progress tracking
+  - Workout programs
+- Visual effects (rain and fog animations)
+
+## Latest Deployment
+Latest production URL: https://ascend-your-fitness-journey-mfpfe85og.vercel.app
+
+## Known Issues to Fix
+1. 404 errors after signup/login
+2. Project structure needs reorganization (app directory should be at root)
+3. Configuration files (package.json, tsconfig.json) need to be at root level
+
+## Dependencies
+- next: 14.1.0
+- next-auth: ^4.24.5
+- react: ^18.2.0
+- react-dom: ^18.2.0
+- TypeScript
+- TailwindCSS
+
+## Next Steps
+1. Fix routing by ensuring proper Next.js route group structure
+2. Move configuration files to root level
+3. Update Vercel deployment settings
+4. Test authentication flow
+
+## Important Files Backup
+All key files are in the repository and deployed to Vercel. The main components are:
+- Authentication pages in (auth) route group
+- Dashboard pages in (dashboard) route group
+- Layouts with visual effects
+- Configuration files (package.json, tsconfig.json, vercel.json)
+
+Your work is safely stored in:
+1. The local repository at C:\Users\addie\fitness-app-new
+2. The Vercel deployment at https://ascend-your-fitness-journey-mfpfe85og.vercel.app
+3. This backup file
+
+When you're ready to continue, we can:
+1. Fix the 404 routing issues
+2. Properly organize the project structure
+3. Complete any remaining features
